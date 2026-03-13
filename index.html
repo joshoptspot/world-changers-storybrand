@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Changers — The Week That Brings Students Closer to Jesus</title>
+  <meta name="description" content="Construction mission trips that produce real life change. Students serve families, encounter God, and come home walking deeper with Jesus.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #0a0a0a;
+      background: #fafafa;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --green: #8BC540;
+      --green-dark: #6fa832;
+      --green-glow: rgba(139, 197, 64, 0.3);
+      --orange: #F58220;
+      --orange-dark: #d96e10;
+      --orange-glow: rgba(245, 130, 32, 0.3);
+      --black: #0a0a0a;
+      --dark: #141414;
+      --gray-900: #1a1a1a;
+      --gray-800: #222;
+      --gray-600: #666;
+      --gray-400: #999;
+      --gray-200: #e5e5e5;
+      --gray-100: #f2f2f2;
+      --white: #fff;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    /* =========== NAV =========== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 0;
+      transition: all 0.35s cubic-bezier(.4,0,.2,1);
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px) saturate(1.4);
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      max-width: 1320px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo img { height: 40px; filter: brightness(0) invert(1); transition: filter 0.35s ease; }
+    nav.scrolled .nav-logo img { filter: none; }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.7); font-size: 0.88rem; font-weight: 500;
+      transition: color 0.2s; letter-spacing: -0.01em;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta-wrap { display: flex; gap: 0.75rem; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem;
+      padding: 0.8rem 1.75rem; border-radius: 60px; border: none; cursor: pointer;
+      transition: all 0.25s cubic-bezier(.4,0,.2,1); letter-spacing: -0.01em;
+    }
+    .btn-green {
+      background: var(--green); color: var(--black);
+      box-shadow: 0 0 0 0 var(--green-glow);
+    }
+    .btn-green:hover {
+      background: var(--green-dark); transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--green-glow);
+    }
+    .btn-orange {
+      background: var(--orange); color: #fff;
+      box-shadow: 0 0 0 0 var(--orange-glow);
+    }
+    .btn-orange:hover {
+      background: var(--orange-dark); transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--orange-glow);
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.08); color: #fff;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); }
+    .btn-dark {
+      background: var(--black); color: #fff;
+    }
+    .btn-dark:hover { background: #222; transform: translateY(-2px); }
+    .btn-lg { padding: 1rem 2.5rem; font-size: 1.05rem; }
+    .btn-arrow::after { content: ' \2192'; font-size: 1.1em; }
+    .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .mobile-toggle span { display: block; width: 22px; height: 2px; background: #fff; margin: 5px 0; border-radius: 2px; }
+
+    /* =========== HERO =========== */
+    .hero {
+      min-height: 100vh; position: relative; display: flex; align-items: center;
+      background: var(--black); overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover; opacity: 0.45;
+      filter: contrast(1.1) saturate(1.2);
+    }
+    .hero-gradient {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(139,197,64,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(245,130,32,0.1) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.6) 60%, rgba(10,10,10,0.95) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1320px; margin: 0 auto; padding: 10rem 2rem 6rem;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(139,197,64,0.12); border: 1px solid rgba(139,197,64,0.25);
+      border-radius: 60px; padding: 0.45rem 1.1rem; margin-bottom: 1.75rem;
+    }
+    .hero-tag-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--green-glow); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 6px transparent; }
+    }
+    .hero-tag span { color: var(--green); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+    .hero h1 {
+      font-family: 'Outfit', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900; line-height: 1.02; letter-spacing: -0.04em;
+      color: #fff; max-width: 800px; margin-bottom: 1.5rem;
+    }
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--green), var(--orange));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: rgba(255,255,255,0.6);
+      max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 4rem; }
+    .hero-stats {
+      display: flex; gap: 3rem;
+    }
+    .hero-stat strong {
+      display: block; font-family: 'Outfit', sans-serif; font-size: 2rem;
+      font-weight: 800; color: #fff; letter-spacing: -0.03em;
+    }
+    .hero-stat span { font-size: 0.78rem; color: rgba(255,255,255,0.4); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* =========== SECTION BASICS =========== */
+    .section { padding: clamp(5rem, 10vw, 8rem) 0; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 2rem; }
+    .section-head { margin-bottom: 3.5rem; }
+    .section-head .tag {
+      display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem;
+      background: rgba(139,197,64,0.08); padding: 0.4rem 1rem; border-radius: 60px;
+    }
+    .section-head h2 {
+      font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+    }
+    .section-head p {
+      font-size: 1.1rem; color: var(--gray-600); max-width: 560px; line-height: 1.7; margin-top: 1rem;
+    }
+
+    /* =========== STAKES =========== */
+    .stakes { background: #fff; }
+    .stakes-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .stakes-visual { position: relative; }
+    .stakes-img {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.08);
+    }
+    .stakes-img img { width: 100%; height: 480px; object-fit: cover; }
+    .stakes-float {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--orange); color: #fff; padding: 1.25rem 1.75rem;
+      border-radius: var(--radius-sm); font-weight: 700; font-size: 0.95rem;
+      box-shadow: 0 12px 32px var(--orange-glow); line-height: 1.4;
+    }
+    .stakes-content p {
+      color: var(--gray-600); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.25rem;
+    }
+    .stakes-content p strong { color: var(--black); }
+    .stakes-callout {
+      background: var(--gray-100); border-radius: var(--radius-sm);
+      padding: 1.5rem 1.75rem; margin-top: 2rem; border-left: 4px solid var(--orange);
+    }
+    .stakes-callout p {
+      margin: 0; color: var(--black); font-weight: 500; font-size: 1rem;
+    }
+
+    /* =========== VALUE / SUCCESS =========== */
+    .value { background: var(--black); color: #fff; position: relative; overflow: hidden; }
+    .value::before {
+      content: ''; position: absolute; top: -300px; right: -200px;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,197,64,0.06), transparent 70%);
+    }
+    .value .section-head p { color: rgba(255,255,255,0.5); }
+    .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .value-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); overflow: hidden;
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1), border-color 0.35s;
+    }
+    .value-card:hover {
+      transform: translateY(-6px); border-color: rgba(139,197,64,0.2);
+    }
+    .value-card-img { height: 240px; overflow: hidden; }
+    .value-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+    }
+    .value-card:hover .value-card-img img { transform: scale(1.06); }
+    .value-card-body { padding: 2rem; }
+    .value-card-body .icon {
+      width: 48px; height: 48px; border-radius: 12px; display: flex;
+      align-items: center; justify-content: center; margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+    .value-card-body h3 {
+      font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 700;
+      margin-bottom: 0.75rem; letter-spacing: -0.02em;
+    }
+    .value-card-body p { color: rgba(255,255,255,0.5); font-size: 0.95rem; line-height: 1.75; }
+
+    /* =========== GUIDE =========== */
+    .guide { background: #fff; }
+    .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .guide-content p { color: var(--gray-600); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; }
+    .guide-metrics {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem;
+    }
+    .guide-metric {
+      background: var(--gray-100); border-radius: var(--radius-sm); padding: 1.5rem;
+      text-align: center; transition: transform 0.2s;
+    }
+    .guide-metric:hover { transform: scale(1.03); }
+    .guide-metric strong {
+      display: block; font-family: 'Outfit', sans-serif; font-size: 2rem;
+      font-weight: 800; color: var(--black); letter-spacing: -0.03em;
+    }
+    .guide-metric span { font-size: 0.8rem; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+    .guide-visual { position: relative; }
+    .guide-img { border-radius: var(--radius); overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.08); }
+    .guide-img img { width: 100%; height: 520px; object-fit: cover; }
+    .guide-quote-card {
+      position: absolute; bottom: -2rem; left: -1.5rem;
+      background: var(--dark); color: #fff; padding: 1.75rem;
+      border-radius: var(--radius-sm); max-width: 340px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+      border-left: 3px solid var(--green);
+    }
+    .guide-quote-card p {
+      font-size: 0.95rem; line-height: 1.65; color: rgba(255,255,255,0.8);
+      font-style: italic; margin-bottom: 0.75rem;
+    }
+    .guide-quote-card cite {
+      font-style: normal; font-size: 0.8rem; color: var(--green); font-weight: 700;
+    }
+
+    /* =========== PLAN =========== */
+    .plan { background: var(--gray-100); }
+    .plan .section-head { text-align: center; }
+    .plan .section-head p { margin: 1rem auto 0; }
+    .plan-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;
+    }
+    .plan-card {
+      background: #fff; border-radius: var(--radius); padding: 2.5rem 2rem;
+      text-align: center; position: relative; transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--gray-200);
+    }
+    .plan-card:hover {
+      transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+    }
+    .plan-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--black); font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem; font-weight: 900; display: flex;
+      align-items: center; justify-content: center; margin: 0 auto 1.5rem;
+      box-shadow: 0 6px 20px var(--green-glow);
+    }
+    .plan-card h3 {
+      font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700;
+      margin-bottom: 0.75rem; letter-spacing: -0.02em;
+    }
+    .plan-card p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; }
+    .plan-card-img {
+      margin-top: 1.5rem; border-radius: var(--radius-sm); overflow: hidden; height: 160px;
+    }
+    .plan-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .plan-connector {
+      display: none; /* shown on desktop via pseudo */
+    }
+
+    /* =========== WEEK DETAIL =========== */
+    .week { background: #fff; }
+    .week-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
+    .week-content h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--green), var(--orange));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .week-content p { color: var(--gray-600); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; }
+    .week-list { list-style: none; margin: 1.5rem 0 2rem; }
+    .week-list li {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem;
+      font-size: 1rem; font-weight: 500; color: var(--black);
+    }
+    .week-list li .check {
+      width: 24px; height: 24px; border-radius: 50%; background: var(--green);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .week-list li .check svg { width: 14px; height: 14px; }
+    .week-mosaic {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+    }
+    .week-mosaic .img-wrap {
+      border-radius: var(--radius-sm); overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .week-mosaic .img-wrap:first-child { grid-row: 1 / 3; }
+    .week-mosaic .img-wrap img { width: 100%; height: 100%; object-fit: cover; min-height: 200px; }
+
+    /* =========== TESTIMONIALS =========== */
+    .social-proof { background: var(--dark); color: #fff; overflow: hidden; position: relative; }
+    .social-proof::before {
+      content: ''; position: absolute; bottom: -200px; left: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,130,32,0.06), transparent 70%);
+    }
+    .social-proof .section-head p { color: rgba(255,255,255,0.45); }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .t-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); padding: 2rem; transition: border-color 0.3s;
+    }
+    .t-card:hover { border-color: rgba(139,197,64,0.2); }
+    .t-stars { color: var(--orange); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 3px; }
+    .t-card blockquote {
+      font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem; font-style: italic;
+    }
+    .t-author { display: flex; align-items: center; gap: 0.75rem; }
+    .t-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--orange));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.8rem; color: #fff;
+    }
+    .t-info strong { display: block; font-size: 0.88rem; }
+    .t-info span { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+    /* =========== CTA BANNER =========== */
+    .cta-banner { position: relative; padding: clamp(6rem, 12vw, 10rem) 0; overflow: hidden; }
+    .cta-banner-bg { position: absolute; inset: 0; }
+    .cta-banner-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .cta-banner-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(139,197,64,0.2) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.9) 100%);
+    }
+    .cta-inner {
+      position: relative; z-index: 2; text-align: center; max-width: 680px; margin: 0 auto;
+    }
+    .cta-inner h2 {
+      font-family: 'Outfit', sans-serif; font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1.08;
+      margin-bottom: 1.25rem;
+    }
+    .cta-inner h2 .accent {
+      background: linear-gradient(135deg, var(--green), var(--orange));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cta-inner p { color: rgba(255,255,255,0.6); font-size: 1.15rem; line-height: 1.7; margin-bottom: 2.5rem; }
+    .cta-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+    .cta-meta { margin-top: 1.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+
+    /* =========== LEAD GEN =========== */
+    .lead-gen { background: var(--gray-100); }
+    .lead-gen-card {
+      display: grid; grid-template-columns: 1fr 1.1fr; background: #fff;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 16px 56px rgba(0,0,0,0.05); border: 1px solid var(--gray-200);
+    }
+    .lead-gen-img img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; }
+    .lead-gen-body {
+      padding: 3.5rem; display: flex; flex-direction: column; justify-content: center;
+    }
+    .lead-gen-body h2 {
+      font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.15;
+    }
+    .lead-gen-body p { color: var(--gray-600); line-height: 1.7; margin-bottom: 1.5rem; }
+    .lead-gen-form { display: flex; gap: 0.6rem; }
+    .lead-gen-form input {
+      flex: 1; padding: 0.85rem 1.25rem; border: 2px solid var(--gray-200);
+      border-radius: 60px; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .lead-gen-form input:focus { border-color: var(--green); }
+    .lead-gen-form input::placeholder { color: var(--gray-400); }
+    .lead-gen-fine { margin-top: 0.6rem; font-size: 0.78rem; color: var(--gray-400); }
+
+    /* =========== FOOTER =========== */
+    footer {
+      background: var(--black); color: rgba(255,255,255,0.5); padding: 4rem 0 2rem;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.3fr;
+      gap: 3rem; margin-bottom: 3rem;
+    }
+    .footer-brand img { height: 36px; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 320px; }
+    .footer-col h4 {
+      color: #fff; font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 1.25rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a { font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-contact { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.88rem; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 2rem;
+      display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem;
+    }
+
+    /* =========== SB ANNOTATION BAR =========== */
+    .sb-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
+      transform: translateY(100%); transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(139,197,64,0.15);
+    }
+    .sb-bar.visible { transform: translateY(0); }
+    .sb-bar-inner {
+      max-width: 1320px; margin: 0 auto; padding: 0.8rem 2rem;
+      display: flex; align-items: center; gap: 1.25rem;
+    }
+    .sb-label {
+      background: var(--green); color: var(--black); font-size: 0.68rem; font-weight: 800;
+      padding: 0.3rem 0.8rem; border-radius: 60px; text-transform: uppercase;
+      letter-spacing: 0.06em; white-space: nowrap; flex-shrink: 0;
+    }
+    .sb-text { font-size: 0.85rem; color: rgba(255,255,255,0.75); flex: 1; line-height: 1.5; }
+    .sb-close {
+      background: none; border: none; color: rgba(255,255,255,0.4); font-size: 1.3rem;
+      cursor: pointer; padding: 0.25rem; flex-shrink: 0; line-height: 1;
+    }
+    .sb-close:hover { color: #fff; }
+
+    /* =========== RESPONSIVE =========== */
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .stakes-grid, .guide-grid, .week-grid, .lead-gen-card { grid-template-columns: 1fr; }
+      .value-grid, .plan-grid, .testimonial-grid { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .guide-quote-card { position: relative; bottom: auto; left: auto; margin-top: 1rem; max-width: 100%; }
+      .stakes-float { right: 1rem; bottom: 1rem; }
+    }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero-stats { flex-direction: column; gap: 1.5rem; }
+      .hero-actions { flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .cta-btns { flex-direction: column; align-items: center; }
+      .lead-gen-form { flex-direction: column; }
+      .week-mosaic { grid-template-columns: 1fr; }
+      .week-mosaic .img-wrap:first-child { grid-row: auto; }
+      .sb-bar-inner { flex-direction: column; text-align: center; gap: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="logo.avif" alt="World Changers">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#what-happens">What Happens</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#stories">Stories</a></li>
+      </ul>
+      <div class="nav-cta-wrap">
+        <a href="#register" class="btn btn-green btn-arrow" style="font-size:0.85rem; padding:0.65rem 1.5rem;">Register Now</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=1920&q=80&auto=format&fit=crop" alt="Excited students working together">
+    </div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>
+        <span>Summer 2026 — Spots filling fast</span>
+      </div>
+      <h1>One Week That <br>Brings Your Students <span class="accent">Closer to Jesus</span></h1>
+      <p class="hero-sub">When students serve real families with their own hands, something shifts inside them. Faith becomes real. Hearts break for others. And they come home walking deeper with God than ever before.</p>
+      <div class="hero-actions">
+        <a href="#register" class="btn btn-green btn-lg btn-arrow">Register Your Group</a>
+        <a href="#lead-gen" class="btn btn-ghost btn-lg">Get the Free Planning Guide</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>400K+</strong>
+          <span>Students sent</span>
+        </div>
+        <div class="hero-stat">
+          <strong>16</strong>
+          <span>Cities this summer</span>
+        </div>
+        <div class="hero-stat">
+          <strong>30K+</strong>
+          <span>Homes restored</span>
+        </div>
+        <div class="hero-stat">
+          <strong>35</strong>
+          <span>Years strong</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STAKES ===== -->
+  <section class="stakes section" id="about">
+    <div class="wrap">
+      <div class="stakes-grid">
+        <div class="stakes-visual">
+          <div class="stakes-img">
+            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800&q=80&auto=format&fit=crop" alt="Students looking for purpose">
+          </div>
+          <div class="stakes-float">Faith grows when<br>it's put into action.</div>
+        </div>
+        <div class="stakes-content">
+          <div class="section-head">
+            <span class="tag">The heart of it</span>
+            <h2>Your Students Are Ready to Go Deeper &mdash; They Just Need the Right Moment</h2>
+          </div>
+          <p>You see it every week. Students who love Jesus but whose faith still feels distant — something they believe but haven't fully <strong>experienced</strong>. They're ready for more. They just haven't had the moment that makes it real.</p>
+          <p>That moment happens when they step outside their comfort zone, pick up a paintbrush for a stranger, and see God show up in ways no classroom or sermon can replicate.</p>
+          <p>Meanwhile, <strong>thousands of low-income families</strong> across America need exactly the kind of help your students can give. Porches need rebuilding. Ramps need building. And in serving those families, students encounter Jesus in a way that marks them forever.</p>
+          <div class="stakes-callout">
+            <p>The summers that shape a student's faith aren't the ones they forget by August. They're the ones where they got on their knees — to paint a porch and to pray with a homeowner. That's what World Changers creates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VALUE / SUCCESS ===== -->
+  <section class="value section" id="what-happens">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">The life change</span>
+        <h2>They Leave as Students. They Come Home as Disciples.</h2>
+        <p>Construction is what we do. Life change is what happens. Here's what a week of serving others produces in the hearts of your students.</p>
+      </div>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-card-img">
+            <img src="https://images.unsplash.com/photo-1504297050568-910d24c426d3?w=600&q=80&auto=format&fit=crop" alt="Students painting">
+          </div>
+          <div class="value-card-body">
+            <div class="icon" style="background: rgba(139,197,64,0.12);">&#128296;</div>
+            <h3>They discover what they were made for</h3>
+            <p>Something clicks when a student builds a wheelchair ramp for a grandmother who's been stuck inside for months. They realize God made them to serve — and that following Jesus means getting their hands dirty.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-card-img">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&auto=format&fit=crop" alt="Students in community">
+          </div>
+          <div class="value-card-body">
+            <div class="icon" style="background: rgba(245,130,32,0.12);">&#10024;</div>
+            <h3>Their faith becomes their own</h3>
+            <p>Nightly worship. Morning crew devos. Gospel conversations with homeowners. For many students, this is the week faith stops being their parents' and becomes theirs — real, personal, and rooted in Jesus.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-card-img">
+            <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80&auto=format&fit=crop" alt="Community celebration">
+          </div>
+          <div class="value-card-body">
+            <div class="icon" style="background: rgba(139,197,64,0.12);">&#127968;</div>
+            <h3>They see God move — through them</h3>
+            <p>When a homeowner tears up and thanks your student by name, something eternal happens. Students see firsthand that God uses ordinary people to do extraordinary things — and they never forget it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GUIDE ===== -->
+  <section class="guide section">
+    <div class="wrap">
+      <div class="guide-grid">
+        <div class="guide-content">
+          <div class="section-head">
+            <span class="tag">35 years of impact</span>
+            <h2>We've Done This Before. Like, 400,000 Times.</h2>
+          </div>
+          <p>We get it — you want to see real spiritual growth in your students, not just a fun week. Your senior pastor needs to believe it's worth the investment. Parents need to trust it's safe. And you need students to come back walking closer to Jesus.</p>
+          <p>Since 1990, World Changers has partnered with churches like yours to create the kind of week where students encounter God in a way that sticks. We handle the logistics. You get a front-row seat to life change.</p>
+          <div class="guide-metrics">
+            <div class="guide-metric">
+              <strong>400K+</strong>
+              <span>Students mobilized</span>
+            </div>
+            <div class="guide-metric">
+              <strong>$280M</strong>
+              <span>Labor donated</span>
+            </div>
+            <div class="guide-metric">
+              <strong>13M+</strong>
+              <span>Hours served</span>
+            </div>
+            <div class="guide-metric">
+              <strong>35 yrs</strong>
+              <span>And counting</span>
+            </div>
+          </div>
+        </div>
+        <div class="guide-visual">
+          <div class="guide-img">
+            <img src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&q=80&auto=format&fit=crop" alt="Team leaders and students">
+          </div>
+          <div class="guide-quote-card">
+            <p>"This isn't just a construction project. It's a discipleship engine that uses hammers instead of textbooks."</p>
+            <cite>David Flatt, Executive Director</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLAN ===== -->
+  <section class="plan section" id="how-it-works">
+    <div class="wrap">
+      <div class="section-head text-center" style="display:flex;flex-direction:column;align-items:center;">
+        <span class="tag">How it works</span>
+        <h2>Three Steps. That's It.</h2>
+        <p>We made this as simple as possible so you can focus on what actually matters — your students.</p>
+      </div>
+      <div class="plan-grid">
+        <div class="plan-card">
+          <div class="plan-num">1</div>
+          <h3>Pick a City & Register</h3>
+          <p>16 cities across America. Choose the week and location that works for your group. Takes five minutes.</p>
+          <div class="plan-card-img">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&q=80&auto=format&fit=crop" alt="Registering">
+          </div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-num">2</div>
+          <h3>Prep Your Students</h3>
+          <p>We send you everything — parent packets, student prep, packing lists. You'll walk in feeling completely ready.</p>
+          <div class="plan-card-img">
+            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=500&q=80&auto=format&fit=crop" alt="Youth group preparing">
+          </div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-num">3</div>
+          <h3>Show Up & Serve</h3>
+          <p>Your students spend the week building, painting, restoring homes — and they'll come back with stories that last forever.</p>
+          <div class="plan-card-img">
+            <img src="https://images.unsplash.com/photo-1593113630400-ea4288922497?w=500&q=80&auto=format&fit=crop" alt="Students serving">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WEEK DETAIL ===== -->
+  <section class="week section">
+    <div class="wrap">
+      <div class="week-grid">
+        <div class="week-content">
+          <div class="section-head">
+            <span class="tag">Inside the week</span>
+            <h2>More Than a Trip. <em>A Turning Point.</em></h2>
+          </div>
+          <p>Every World Changers week is designed around one goal: creating an environment where students encounter Jesus through serving others. The construction is the vehicle. The life change is the destination.</p>
+          <ul class="week-list">
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Painting, wheelchair ramps, decks, siding & home repair
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Nightly worship rallies with powerful teaching
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Morning crew devotionals grounded in Scripture
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Gospel conversations with real homeowners
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Crews of 10-14 led by experienced crew chiefs
+            </li>
+          </ul>
+          <a href="#register" class="btn btn-dark btn-arrow">Reserve Your Week</a>
+        </div>
+        <div class="week-mosaic">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80&auto=format&fit=crop" alt="Students building">
+          </div>
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&q=80&auto=format&fit=crop" alt="Worship gathering">
+          </div>
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=80&auto=format&fit=crop" alt="Construction work">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="social-proof section" id="stories">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">Real stories</span>
+        <h2>Youth Pastors Call It the Best Week of the Year</h2>
+        <p>Don't take our word for it. Here's what leaders are saying after bringing their students to World Changers.</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="t-card">
+          <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Every year I watch kids who are glued to their phones put them down and pick up paintbrushes — and something shifts. They come home different people. Six summers and counting."</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">MR</div>
+            <div class="t-info">
+              <strong>Pastor Mike Reynolds</strong>
+              <span>Youth Pastor, First Baptist Church, GA</span>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"A parent told me her daughter came home and said, 'Mom, I finally understand why Jesus washed the disciples' feet.' That one sentence made every dollar worth it."</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">SL</div>
+            <div class="t-info">
+              <strong>Sarah Langford</strong>
+              <span>Student Ministry Director, NC</span>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"The logistics are seamless. World Changers handles the details so I can focus on discipling students. Less than most youth camps — but ten times the impact. Best investment we make all year."</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">JT</div>
+            <div class="t-info">
+              <strong>James Thornton</strong>
+              <span>Associate Pastor, Community Bible, TN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner" id="register">
+    <div class="cta-banner-bg">
+      <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1920&q=80&auto=format&fit=crop" alt="Students serving">
+    </div>
+    <div class="wrap">
+      <div class="cta-inner">
+        <h2>Give Your Students the Week That <span class="accent">Changes Everything</span></h2>
+        <p>16 cities. Thousands of families waiting. And a generation of students ready to go deeper with Jesus — they just need you to say yes.</p>
+        <div class="cta-btns">
+          <a href="#" class="btn btn-green btn-lg btn-arrow">Register Your Group Now</a>
+          <a href="tel:8503474601" class="btn btn-ghost btn-lg">Call (850) 347-4601</a>
+        </div>
+        <p class="cta-meta">$300/student &bull; Meals, lodging & materials included &bull; All skill levels welcome</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LEAD GEN ===== -->
+  <section class="lead-gen section" id="lead-gen">
+    <div class="wrap">
+      <div class="lead-gen-card">
+        <div class="lead-gen-img">
+          <img src="https://images.unsplash.com/photo-1531537571171-a707bf2683da?w=600&q=80&auto=format&fit=crop" alt="Planning a trip">
+        </div>
+        <div class="lead-gen-body">
+          <span class="tag" style="margin-bottom:1rem;">Free download</span>
+          <h2>The Youth Pastor's Guide to a Summer That Produces Real Spiritual Growth</h2>
+          <p>Not ready to register? Start here. This free guide covers choosing the right experience, getting church buy-in, preparing students' hearts, and making sure the life change lasts long after you get home.</p>
+          <form class="lead-gen-form" onsubmit="event.preventDefault(); alert('Demo only — in production this captures the email and delivers the guide.');">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit" class="btn btn-green">Get the Guide</button>
+          </form>
+          <p class="lead-gen-fine">No spam. One guide, straight to your inbox.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="logo.avif" alt="World Changers">
+          <p>Helping students grow deeper in their relationship with Jesus through hands-on service since 1990. Construction is the mission. Life change is the result.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#what-happens">What Happens</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#stories">Stories</a></li>
+            <li><a href="#register">Register</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Parent FAQ</a></li>
+            <li><a href="#">Packing List</a></li>
+            <li><a href="#">Project Locations</a></li>
+            <li><a href="#">Church Toolkit</a></li>
+            <li><a href="#lead-gen">Free Guide</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <div class="footer-contact">&#9993;&ensp;info@world-changers.net</div>
+          <div class="footer-contact">&#9742;&ensp;(850) 347-4601</div>
+          <div class="footer-contact">&#9906;&ensp;Panama City, FL</div>
+          <div style="margin-top:1.25rem;">
+            <a href="#register" class="btn btn-green" style="font-size:0.82rem; padding:0.55rem 1.3rem;">Register Now &#8594;</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 World Changers. All rights reserved.</span>
+        <span>Privacy&ensp;&bull;&ensp;Terms</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SB ANNOTATION BAR ===== -->
+  <div class="sb-bar" id="sb-bar">
+    <div class="sb-bar-inner">
+      <div class="sb-label" id="sb-label">StoryBrand</div>
+      <div class="sb-text" id="sb-text">Scroll to see how each section maps to the StoryBrand framework.</div>
+      <button class="sb-close" id="sb-close">&times;</button>
+    </div>
+  </div>
+
+  <script>
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    var sbBar = document.getElementById('sb-bar');
+    var sbLabel = document.getElementById('sb-label');
+    var sbText = document.getElementById('sb-text');
+    var dismissed = false;
+
+    document.getElementById('sb-close').addEventListener('click', function() {
+      sbBar.classList.remove('visible');
+      dismissed = true;
+    });
+
+    var notes = [
+      { s: '.hero', l: 'SB: Header', t: 'THE HEADER \u2014 Leads with the ultimate desire: students growing closer to Jesus. The construction work is mentioned as the method, but the headline promises life change. Both a Direct CTA (Register) and Transitional CTA (Free Guide) are above the fold. Stats build authority.' },
+      { s: '.stakes', l: 'SB: Stakes', t: 'THE STAKES \u2014 The problem is not other programs \u2014 it\'s that students are ready to go deeper with Jesus and haven\'t had the moment that makes faith real. The villain is the gap between head knowledge and heart experience. Construction missions bridges that gap.' },
+      { s: '.value', l: 'SB: Success', t: 'SUCCESS \u2014 This is the payoff: life change. Each card shows a spiritual transformation \u2014 discovering purpose in God, owning their faith, seeing God work through them. Construction is the vehicle. Spiritual growth is the destination. This answers "What will my students become?"' },
+      { s: '.guide', l: 'SB: The Guide', t: 'THE GUIDE \u2014 Establishes World Changers as the trusted guide through empathy ("you want real spiritual growth") and authority (35 years, 400K students). The emphasis is on creating life change, not just running projects.' },
+      { s: '.plan', l: 'SB: The Plan', t: 'THE PLAN \u2014 Three dead-simple steps. If it feels complicated, people bail. "Pick a city, prep your students, show up." That\'s it. The numbered cards with images make the process feel tangible and doable.' },
+      { s: '.week', l: 'SB: Explanatory', t: 'EXPLANATORY \u2014 For visitors who need more detail. Goes deeper without cluttering the hero. The checklist is scannable, and the image mosaic shows the range of the experience \u2014 building, worship, community.' },
+      { s: '.social-proof', l: 'SB: Social Proof', t: 'TESTIMONIALS \u2014 Three stories, each addressing a different objection: emotional impact, spiritual depth, and logistics/cost. Real names and churches build credibility. Let others sell for you.' },
+      { s: '.cta-banner', l: 'SB: Direct CTA', t: 'DIRECT CTA \u2014 The climax. One clear ask: Register. Urgency (spots filling), specifics ($300/student), and a phone number for those who want to talk. This is the conversion moment.' },
+      { s: '.lead-gen', l: 'SB: Transitional CTA', t: 'TRANSITIONAL CTA \u2014 For visitors not ready to commit. The free guide captures their email, starting the 5-email nurture sequence. This is the #1 missed opportunity on most ministry websites \u2014 they only have "Register" with no middle ground.' }
+    ];
+
+    var current = -1;
+    function update() {
+      if (dismissed) return;
+      var mid = window.scrollY + window.innerHeight * 0.5;
+      var idx = -1;
+      for (var i = 0; i < notes.length; i++) {
+        var el = document.querySelector(notes[i].s);
+        if (el) {
+          var r = el.getBoundingClientRect();
+          var t = r.top + window.scrollY;
+          if (mid >= t && mid < t + r.height) idx = i;
+        }
+      }
+      if (idx !== current) {
+        current = idx;
+        if (idx >= 0) {
+          sbLabel.textContent = notes[idx].l;
+          sbText.textContent = notes[idx].t;
+          sbBar.classList.add('visible');
+        } else {
+          sbBar.classList.remove('visible');
+        }
+      }
+    }
+    window.addEventListener('scroll', update);
+    window.addEventListener('load', update);
+  </script>
+
+</body>
+</html>
